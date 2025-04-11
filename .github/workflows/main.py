@@ -60,8 +60,8 @@ df = pd.DataFrame(results, columns=["Rank", "Title", "Artist", "Last Week", "Pea
 # 建立資料夾（例如存放在 data/）
 os.makedirs("data", exist_ok=True)
 
-# 產生檔名：billboard_hot_100_20250411_1600.csv
-timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+taiwan_time = datetime.now(timezone(timedelta(hours=8)))
+timestamp = taiwan_time.strftime("%Y%m%d_%H%M")
 filename = f"data/billboard_hot_100_{timestamp}.csv"
 
 # 儲存成 CSV
