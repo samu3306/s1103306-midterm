@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
+from datetime import timezone, timedelta
 import os
 
 url = "https://www.billboard.com/charts/hot-100/"
