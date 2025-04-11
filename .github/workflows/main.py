@@ -28,8 +28,7 @@ if first_item:
     # 抓統計數字
     number_tags = first_item.select("li span.c-label.a-font-primary-m")
     numbers = [tag.get_text(strip=True) for tag in number_tags if tag.get_text(strip=True)]
-
-
+    rank = "1"
     last_week = text_items[3] if len(text_items) > 2 else ""  #上週排名
     peak = text_items[4] if len(text_items) > 3 else ""     #最高排名）
     weeks = text_items[5] if len(text_items) > 4 else ""    #總周數
