@@ -3,11 +3,11 @@ run-name: midterm Demo Action
 
 on:
   schedule:
-    - cron: "0 8 * * *"  #UTC 上午 8:00（等同於台灣時間下午 4:00）
+    - cron: "0 8 * * *"  # UTC 上午 8:00（等同於台灣下午 4:00）
   workflow_dispatch:
 
 permissions:
-  contents: write  #讓 GITHUB_TOKEN 有權限 push
+  contents: write  # 讓 GITHUB_TOKEN 有權限 push
 
 jobs:
   crawler-demo:
@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install bs4
+      - name: Install dependencies
         run: pip install requests bs4 pandas
 
       - name: Run crawler
@@ -31,7 +31,8 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add . && git commit -m "daily crawl" || echo "No changes"
+          git add .
+          git diff --cached --quiet || git commit -m "daily crawl"
           git push origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
