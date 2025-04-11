@@ -1,9 +1,9 @@
-name: Crawler Demo Action
-run-name: Crawler Demo Action
+name: midterm Demo Action
+run-name: midterm Demo Action
 
 on:
   schedule:
-    - cron: "55 12 * * *"  # UTC 每天下午 12:55
+    - cron: "0 8 * * *"  # UTC 上午 8:00（等同於台灣時間下午 4:00）
   workflow_dispatch:
 
 permissions:
@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
+      - name: Install bs4
         run: pip install requests bs4 pandas
 
       - name: Run crawler
