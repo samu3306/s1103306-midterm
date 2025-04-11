@@ -34,7 +34,6 @@ if first_item:
     peak = text_items[4] if len(text_items) > 3 else ""     #最高排名）
     weeks = text_items[5] if len(text_items) > 4 else ""    #總周數
 
-    rank = "1"
     results.append([rank, title, artist, last_week, peak, weeks])
 
 # 接下來處理其他排名
