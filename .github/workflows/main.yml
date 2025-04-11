@@ -3,11 +3,11 @@ run-name: midterm Demo Action
 
 on:
   schedule:
-    - cron: "0 8 * * *"  # UTC 上午 8:00（等同於台灣時間下午 4:00）
+    - cron: "0 8 * * *"  #UTC 上午 8:00（等同於台灣時間下午 4:00）
   workflow_dispatch:
 
 permissions:
-  contents: write  # ⬅️ 這一行是關鍵！讓 GITHUB_TOKEN 有權限 push
+  contents: write  #讓 GITHUB_TOKEN 有權限 push
 
 jobs:
   crawler-demo:
