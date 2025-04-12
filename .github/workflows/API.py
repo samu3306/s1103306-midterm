@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 from datetime import datetime
 from datetime import timezone, timedelta
+import os
 
 API_KEY = '94faece3b1289de731ec94cbc6553680'
 url = f'https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key={API_KEY}&format=json&limit=100'
