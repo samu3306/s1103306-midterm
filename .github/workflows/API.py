@@ -1,5 +1,7 @@
 import requests
 import pandas as pd
+from datetime import datetime
+from datetime import timezone, timedelta
 
 API_KEY = '94faece3b1289de731ec94cbc6553680'
 url = f'https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key={API_KEY}&format=json&limit=100'
@@ -16,8 +18,14 @@ for t in tracks:
     playcount = t['playcount']
     url = t['url']
     results.append([name, artist, playcount, url])
+# 建立資料夾（例如存放在 data/）
+os.makedirs("data", exist_ok=True)
 
-df = pd.DataFrame(results, columns=['Title', 'Artist', 'Playcount', 'URL'])
-df.to_csv('lastfm_top_tracks.csv', index=False, encoding='utf-8-sig')
+taiwan_time = datetime.now(timezone(timedelta(hours=8)))
+timestamp = taiwan_time.strftime("%Y%m%d_%H%M")
+filename = f"data/API_last_fm{timestamp}.csv"
 
-print("✅ 抓取成功，儲存為 lastfm_top_tracks.csv")
+# 儲存成 CSV
+df.to_csv(filename, index=False, encoding="utf-8-sig")
+
+print(f"Data has been saved to '{filename}'.")
