@@ -24,15 +24,18 @@ jobs:
       - name: Install dependencies
         run: pip install requests bs4 pandas
 
-      - name: Run crawler
+      - name: Run crawler (Billboard)
         run: python .github/workflows/main.py
+
+      - name: Run API fetcher (e.g., Last.fm or Spotify)
+        run: python .github/workflows/API.py
 
       - name: Commit & Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git diff --cached --quiet || git commit -m "daily crawl"
+          git diff --cached --quiet || git commit -m "daily crawl and API data"
           git push origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
