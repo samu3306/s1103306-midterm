@@ -26,6 +26,7 @@ taiwan_time = datetime.now(timezone(timedelta(hours=8)))
 timestamp = taiwan_time.strftime("%Y%m%d_%H%M")
 filename = f"data/API_last_fm{timestamp}.csv"
 
+df = pd.DataFrame(results, columns=['Title', 'Artist', 'Playcount', 'URL'])
 # 儲存成 CSV
 df.to_csv(filename, index=False, encoding="utf-8-sig")
 
